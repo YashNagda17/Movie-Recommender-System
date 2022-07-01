@@ -1,0 +1,11 @@
+{
+    "name": "Local: predict_page",
+    "url": "c:\\Users\\yashn\\Desktop\\mc\\predict_page.py",
+    "tests": [],
+    "interactive": false,
+    "memoryLimit": 1024,
+    "timeLimit": 3000,
+    "srcPath": "c:\\Users\\yashn\\Desktop\\mc\\predict_page.py",
+    "group": "local",
+    "local": true
+}
