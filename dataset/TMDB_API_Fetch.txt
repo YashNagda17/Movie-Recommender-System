@@ -1,0 +1,82 @@
+
+function callTMDB(movie_key,cell_key) {
+  var ss= SpreadsheetApp.getActive();
+  var sheet = ss.getSheets()[0];
+  add=5001;
+  var array=sheet.getRange(2+add,2,2+add+1000,2).getValues();
+  var array1=sheet.getRange(2+add,3,2+add+1000,3).getValues();
+  var vote_avg = new Array();
+  var vote_count = new Array();
+  //console.log(array[624][0]);
+  function ischeckurl(url){
+  retvalue=false;
+  try {
+    
+    var response = UrlFetchApp.fetch(url);
+    if(response.getResponseCode() == 200) {  
+      retValue = true;
+    }
+    } catch (err) {
+      retValue = false;
+    }
+    return retValue;
+  }
+  function max(a,b){
+    if (a>=b){
+      return a;
+    }
+    return b;
+  }
+  
+// Use API Key from tmdb instead of ####
+  array.forEach
+  (function (item, index) 
+  { 
+      str1=item[0];
+      str="https://api.themoviedb.org/3/movie/?api_key=####"
+      //str="https://api.themoviedb.org/3/find/tt?api_key=####&external_source=imdb_id"
+      //console.log(item[0])
+      str = str.substring(0,35 ) + str1+ str.substring(35,str.length);
+      if (ischeckurl(str)){   
+        console.log(str);
+        var response = UrlFetchApp.fetch(str);
+        var json = response.getContentText();
+        var data = JSON.parse(json);
+        //Logger.log(data);
+        //console.log(data);
+        vote_avg[index]=data["vote_average"];
+        vote_count[index]=data["vote_count"];
+        //console.log(index);
+        sheet.getRange(2+index+add,4).setValue(data["vote_average"]);
+        sheet.getRange(2+index+add,5).setValue(data["vote_count"]);
+        sheet.getRange(2+index+add,6).setValue(data["popularity"]);
+      }
+      else{
+        str1=array1[index][0];
+        str="https://api.themoviedb.org/3/find/tt?api_key=####&external_source=imdb_id";
+        str = str.substring(0,36 ) + str1+ str.substring(36,str.length);
+        console.log(str);
+        var response = UrlFetchApp.fetch(str);
+        var json = response.getContentText();
+        var data = JSON.parse(json);
+        Logger.log(data);
+        data1=data["tv_results"]
+        data2=data["movie_results"]
+        vote_avg[index]=max(data1["vote_average"],data2["vote_average"]);
+        vote_count[index]=max(data1["vote_count"],data2["vote_count"]);
+        var popu = max(data1["popularity"],data2["popularity"]);
+        //console.log(index);
+        sheet.getRange(2+index+add,4).setValue(max(0,vote_avg[index]));
+        sheet.getRange(2+index+add,5).setValue(max(0,vote_count[index]));
+        sheet.getRange(2+index+add,6).setValue(max(0,popu));
+
+
+      }     
+  }
+  );
+  
+  
+  
+  
+}
+

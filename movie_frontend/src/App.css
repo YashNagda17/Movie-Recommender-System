@@ -1,0 +1,70 @@
+/* .App {
+  text-align: center;
+} */
+
+:root {
+  --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+}
+
+
+.App-header {
+  
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  /* color: rgb(137, 185, 189); */
+}
+
+body {
+  background-color: #b0e1eb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* color: rgb(82, 64, 171); */
+}
+
+
+
+.card {
+  background: #212F3C ;
+  border: 1px solid #dd2476;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  margin-top: 10;
+}
+
+.btn {
+  border: 5px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  border-image-source:  var(--gradient) !important; 
+  text-decoration: none;
+  transition: all .4s ease;
+}
+
+.btn:hover, .btn:focus {
+      background: var(--gradient) !important;
+  -webkit-background-clip: none !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 5px solid #fff !important; 
+  box-shadow: #222 1px 0 10px;
+  text-decoration: underline;
+}
+
+input[type="radio"]{
+  display:none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+
