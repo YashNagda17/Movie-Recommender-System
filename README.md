@@ -7,7 +7,7 @@ In this Project, a Movie recommender system is built based on TMDB-Small dataset
  <br /> 1.The Notebook 'Jupyter-Notebook' contains pre-processing and Performance of dataset on few basic models.
  <br /> 2.The Notebook 'Main_Model' contains the implementation of final main model, used to give accurate recommendations and for implementation.
 
-<br /> The django folder consists of backend implementation, and movie_frontend consists of forntend made by react. 
+<br /> The django folder consists of backend implementation, and movie_frontend consists of frontend made by react. 
 
 <br /> To start backend, run the following command: python manage.py runserver
 
